@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
-import { decrement, decrementByAmount, increment, incrementByAmount } from "./CounterSlice";
-
-
-
-
-
+import {
+  decrement,
+  decrementByAmount,
+  increment,
+  incrementByAmount,
+} from "./CounterSlice";
 
 const Counter = () => {
   const dispatch = useDispatch();
