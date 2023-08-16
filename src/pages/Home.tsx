@@ -5,10 +5,16 @@ import UsersPage from "./Userspage";
 const Home = () => {
   return (
     <>
-      <div>Home</div>
-      <Coin />
-      <Counter />
-      <UsersPage />
+      <div>
+        <div style={{ textAlign: "center" }}>
+          <Coin />
+          <Counter />
+        </div>
+        <hr/>
+        <div>
+          <UsersPage />
+        </div>
+      </div>
     </>
   );
 };
