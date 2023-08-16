@@ -1,15 +1,16 @@
-import React from 'react'
-import Coin from '../Store/Coin'
-import Counter from '../Store/Counter'
+import Coin from "../redux/Coin";
+import Counter from "../redux/Counter";
+import UsersPage from "./Userspage";
 
 const Home = () => {
   return (
     <>
-    <div>Home</div>
-    <Coin/>
-    <Counter/>
+      <div>Home</div>
+      <Coin />
+      <Counter />
+      <UsersPage />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
