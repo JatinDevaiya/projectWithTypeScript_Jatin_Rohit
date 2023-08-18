@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 // import Navbar from "./pages/Navbar";
 import Sidebar from "./Component/Sidebar";
+import React from "react";
 
 const App: React.FunctionComponent=() =>{
   return (
