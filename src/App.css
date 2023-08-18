@@ -8,7 +8,7 @@
     display: flex;
   }
   main {
-    padding: 10px;
+    padding-left: 650px;
   }
   
   .title {
@@ -22,6 +22,7 @@
     background: rgb(0, 7, 61);
     color: white;
     height: 100vh;
+    position: fixed;
   }
   
   .top_section {
@@ -36,6 +37,7 @@
   }
   .bars {
     width: 30px;
+    font-size: 30px;
   }
   .hide {
     display: none;
@@ -48,20 +50,24 @@
     height: 30px;
     padding: 10px;
   }
+  .search_icon{
+    font-size: 30px;
+  }
   .search input {
     border: none;
     margin-left: 10px;
     border-radius: 5px;
     background: rgb(238, 238, 238);
   
-    color: white;
+    color: rgb(17, 17, 17);
   }
   
   .routes {
     margin-top: 15px;
-    display: flex;
-    flex-direction: column;
+    display: block;
+    /* flex-direction: column; */
     gap: 5px;
+    font-size: 30px;
   }
   .link {
     display: flex;
@@ -82,5 +88,5 @@
   }
   .link_text {
     white-space: nowrap;
-    font-size: 15px;
+    font-size: 30px;
   }
