@@ -1,16 +1,16 @@
 import Coin from "../redux/Coin";
 import Counter from "../redux/Counter";
 import UsersPage from "./Userspage";
-
+import React from "react";
 const Home = () => {
   return (
     <>
       <div>
         <div style={{ textAlign: "center" }}>
-          <Coin />
-          <Counter />
+          {/* <Coin /> */}
+          {/* <Counter /> */}
         </div>
-        <hr/>
+        {/* <hr/> */}
         <div>
           <UsersPage />
         </div>

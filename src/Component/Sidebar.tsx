@@ -1,94 +1,128 @@
-import React, { useState } from 'react'
-import * as FaIcons from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { SidebarData } from './SidebarData'
+import { useState } from "react"
+import React from 'react'
+import { motion, AnimatePresence } from "framer-motion"
+import { NavLink } from "react-router-dom"
+import { SidebarData } from "./SidebarData"
+import { FaBars } from "react-icons/fa"
+import { BiSearch } from "react-icons/bi"
+const SIdebar1 = ({ children }: any) => {
+    const [isOpan, setIsOpan] = useState(false)
+    const toggle = () => setIsOpan(!isOpan)
 
-const Sidebar: React.FunctionComponent = () => {
-    const [close, setClose] = useState(false)
-    const showSidebar = () => setClose(!close)
-    const Navbar = styled.div`
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        height: 3.5rem;
-        background-color: #000080;
-    `
-    const MenuIconOpen = styled(Link)`
-        display: flex;
-        justify-content: start;
-        font-size: 1.5rem;
-        margin-left: 2rem;
-        color: #ffffff;
-    `
-    const MenuIconClose = styled(Link)`
-        display: flex;
-        justify-content: end;
-        font-size: 1.5rem;
-        margin-top: 0.75rem;
-        margin-right: 1rem;
-        color: #ffffff;
-    `
-    const SidebarMenu = styled.div<{ close: boolean }>`
-        width: 250px;
-        height: 100vh;
-        background-color: #000080;
-        position: fixed;
-        top: 0;
-        left: ${({ close }) => close ? '0' : '-100%'};
-        transition: .6s;
-    `
-    const MenuItems = styled.li`
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        width: 100%;
-        height: 90px;
-        padding: 1rem 0 1.25rem;
-    `
-    const MenuItemLinks = styled(Link)`
-        display: flex;
-        align-items: center;
-        padding: 0 2rem;
-        font-size: 20px;
-        text-decoration: none;
-        color: #ffffff;
-            &:hover {
-            background-color: #ffffff;
-            color: #000080;
-            width: 100%;
-            height: 45px;
-            text-align: center;
-            border-radius: 5px;
-            margin: 0 2rem;
-        }
-    `
-        return (
+
+
+    const inputAnimation = {
+        hidden: {
+            width: 0,
+            padding: 0,
+            transition: {
+                duration: 0.2,
+            },
+        },
+        show: {
+            width: "140px",
+            padding: "5px 15px",
+            transition: {
+                duration: 0.2,
+            },
+        },
+    };
+
+    const showAnimation = {
+        hidden: {
+            width: 0,
+            opacity: 0,
+            transition: {
+                duration: 0.5,
+            },
+        },
+        show: {
+            opacity: 1,
+            width: "auto",
+            transition: {
+                duration: 0.5,
+            },
+        },
+    };
+    return (
         <>
-            <Navbar>
-                <MenuIconOpen to="#" onClick={showSidebar}>
-                    <FaIcons.FaBars />
-                </MenuIconOpen>
-            </Navbar>
-            <SidebarMenu close={close}>
-                <MenuIconClose to="#" onClick={showSidebar}>
-                    <FaIcons.FaTimes />
-                </MenuIconClose>
-                {SidebarData.map((item, index) => {
-                    console.log("aaa", item)
-                    return (
-                        <MenuItems key={index}>
-                            <MenuItemLinks to={item.path}>
-                                {item.icon}
-                                <span style={{ marginLeft: '16px' }}>{item.name}</span>
-                            </MenuItemLinks>
-                        </MenuItems>
-                    )
+          <div className="main-container">
+            <motion.div
+              animate={{
+                width: isOpan ? "200px" : "45px",
+                transition: { duration: 0.5, type: "spring", damping: 10 },
+              }}
+              className={`sidebar `}
+            >
+              <div className="top_section">
+                <AnimatePresence>
+                  {isOpan && (
+                    <motion.h1
+                      variants={showAnimation}
+                      initial="hidden"
+                      animate="show"
+                      exit="hidden"
+                      className="logo"
+                    >
+                      DoSomeCoding
+                    </motion.h1>
+                  )}
+                </AnimatePresence>
+    
+                <div className="bars">
+                  <FaBars onClick={toggle} />
+                </div>
+              </div>
+              <div className="search">
+                <div className="search_icon">
+                  <BiSearch />
+                </div>
+                <AnimatePresence>
+                  {isOpan && (
+                    <motion.input
+                      initial="hidden"
+                      animate="show"
+                      exit="hidden"
+                      variants={inputAnimation}
+                      type="text"
+                      placeholder="Search"
+                    />
+                  )}
+                </AnimatePresence>
+              </div>
+              <section className="routes">
+                {SidebarData.map((route, index) => {
+                  return (
+                    <NavLink
+                      to={route.path}
+                      key={index}
+                      className="link"
+                    //   activeClassName="active"
+                    >
+                      <div className="icon">{route.icon}</div>
+                      <AnimatePresence>
+                        {isOpan && (
+                          <motion.div
+                            variants={showAnimation}
+                            initial="hidden"
+                            animate="show"
+                            exit="hidden"
+                            className="link_text"
+                          >
+                            {route.name}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </NavLink>
+                  );
                 })}
-            </SidebarMenu>
-
+              </section>
+            </motion.div>
+    
+            <main>{children}</main>
+          </div>
         </>
-    )
-}
-export default Sidebar
+      );
+    };
+
+export default SIdebar1

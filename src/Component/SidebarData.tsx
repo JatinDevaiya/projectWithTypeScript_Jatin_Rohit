@@ -18,13 +18,9 @@ export const SidebarData= [
         name: "Abouut",
         path :"/about",
         icon : <FaIcons.FaRegChartBar />
-    }
-    ,
-    {
-        name: "Navbar",
-        path :"/navbar",
-        icon : <FaIcons.FaRegChartBar />
-    }
+    },
+    
+    
 ]
 
 

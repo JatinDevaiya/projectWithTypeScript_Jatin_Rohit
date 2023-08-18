@@ -1,4 +1,6 @@
 import {useSelector} from 'react-redux';
+import React from "react";
+
 const Coin = () => {
   const {coin} = useSelector((state:any)=>state.counter);
   return (
