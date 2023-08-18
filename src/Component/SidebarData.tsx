@@ -5,20 +5,22 @@ import * as FaIcons from 'react-icons/fa'
 export const SidebarData= [
 
     {
-        Title: "Home",
+        name: "Home",
         path :"/",
         icon : <FaIcons.FaHome/>
     },
     {
-        Title: "Contact",
+        name: "Contact",
         path :"/contact",
         icon : <FaIcons.FaUsers />
     },
     {
-        Title: "Abouut",
+        name: "Abouut",
         path :"/about",
         icon : <FaIcons.FaRegChartBar />
-    }
+    },
+    
+    
 ]
 
 

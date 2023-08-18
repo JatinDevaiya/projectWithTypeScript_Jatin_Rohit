@@ -24,6 +24,7 @@ const UsersPage = () => {
           <h3>All Products </h3>
           <div className="row">
             {data.map((allProduct: product, index: number) => {
+              console.log("aaaaaaaaaa" ,data)
               return (
                 <>
                   <div className="col-md-3">
