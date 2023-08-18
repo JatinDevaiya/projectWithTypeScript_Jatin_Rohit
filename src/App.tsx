@@ -5,8 +5,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 // import Navbar from "./pages/vNavbar";
-// import Sidebar from "./Component/Sidebar";
-import SIdebar1 from "./Component/Sidebar";
 // import Navbar from "./pages/Navbar";
 import Sidebar from "./Component/Sidebar";
 
@@ -15,7 +13,7 @@ const App: React.FunctionComponent=() =>{
     <>
 
       <Router>
-      <SIdebar1 >
+      <Sidebar >
       {/* <Navbar /> */}
 
       <Routes>
@@ -23,7 +21,7 @@ const App: React.FunctionComponent=() =>{
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
       </Routes>
-      </SIdebar1>
+      </Sidebar>
       </Router>
     </>
   );
