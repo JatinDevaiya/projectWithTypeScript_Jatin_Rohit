@@ -4,8 +4,7 @@ import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home"; 
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-// import Navbar from "./pages/vNavbar";
-// import Navbar from "./pages/Navbar";
+import Navbar from "./pages/Navbar";
 import Sidebar from "./Component/Sidebar";
 
 const App: React.FunctionComponent=() =>{
