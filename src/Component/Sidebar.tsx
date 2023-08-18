@@ -81,7 +81,7 @@ const Sidebar: React.FunctionComponent = () => {
                         <MenuItems key={index}>
                             <MenuItemLinks to={item.path}>
                                 {item.icon}
-                                <span style={{ marginLeft: '16px' }}>{item.Title}</span>
+                                <span style={{ marginLeft: '16px' }}>{item.name}</span>
                             </MenuItemLinks>
                         </MenuItems>
                     )
