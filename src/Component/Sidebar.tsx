@@ -71,6 +71,14 @@ const SIdebar1 = ({ children }: any) => {
               <FaBars onClick={toggle} />
             </div>
           </div>
+
+          {/* login Page */}
+          <NavLink to={"/signIn"}>
+            <h5 style={{ color: "white", textAlign: "center" }}>Login</h5>
+          </NavLink>
+              
+          <h5 style={{ color: "white", textAlign: "center" }}>Logout</h5>
+
           <div className="search">
             <div className="search_icon">
               <BiSearch />

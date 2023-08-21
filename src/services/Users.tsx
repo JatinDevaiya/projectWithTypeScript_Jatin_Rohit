@@ -13,6 +13,27 @@ export const usersApi = createApi({
     getSingleUsers: builder.query({
       query: () => "/products/id",
     }),
+// export const { useGetAllUsersQuery,  }: any = usersApi;
+postAllUsers: builder.mutation({
+  query: (newUser) => ({
+    url: "users",
+    method: "POST",
+    body: newUser,
+  }),
+}),
+
+loginUser: builder.mutation({
+  query: (loginUser) => ({
+    url: "/auth/login",
+    method: "POST",
+    body: loginUser,
+  }),
+}),
   }),
 });
-export const { useGetAllUsersQuery, useGetSingleusersQuery }: any = usersApi;
+
+
+
+// }),
+// });
+export const { useGetAllUsersQuery,usePostAllUsersMutation,useLoginUserMutation,useGetSingleusersQuery }: any = usersApi;
