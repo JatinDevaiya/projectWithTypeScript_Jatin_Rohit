@@ -6,6 +6,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Navbar from "./pages/Navbar";
 import Sidebar from "./Component/Sidebar";
+import SignIn from "./pages/auth/SignIn";
+import SignUp from "./pages/auth/SignUp";
 
 const App: React.FunctionComponent=() =>{
   return (
@@ -17,8 +19,10 @@ const App: React.FunctionComponent=() =>{
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
+        <Route path="/signIn" element={<SignIn/>} />
+        <Route path="/signUp" element={<SignUp/>} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       </Sidebar>
       </Router>

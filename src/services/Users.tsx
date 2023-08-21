@@ -10,6 +10,23 @@ export const usersApi = createApi({
     getAllUsers: builder.query({
       query: () => "products",
     }),
+
+    postAllUsers: builder.mutation({
+      query: (newUser) => ({
+        url: "users",
+        method: "POST",
+        body: newUser,
+      }),
+    }),
+    
+    loginUser: builder.mutation({
+      query: (loginUser) => ({
+        url: "/auth/login",
+        method: "POST",
+        body: loginUser,
+      }),
+    }),
+
   }),
 });
-export const { useGetAllUsersQuery }: any = usersApi;
+export const { useGetAllUsersQuery,usePostAllUsersMutation,useLoginUserMutation }: any = usersApi;
