@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetAllUsersQuery } from "../services/Users";
 import LoaddingPage from "./commonPages/LoaddingPage";
+import LoadingFile from "./commonPages/LoadingFile";
 
 interface product {
   id: number;
@@ -13,7 +14,14 @@ const UsersPage = () => {
   console.log("allproduct", useGetAllUsersQuery());
   const { data, isError, isLoading } = useGetAllUsersQuery();
   if (isLoading) {
-    return <LoaddingPage />;
+    return(
+    <h1 style={{
+    
+    }}>
+      <LoaddingPage />
+      <LoadingFile/>
+
+    </h1> )
   }
   if (isError) {
     return <p>Something Went Wrong...</p>;
