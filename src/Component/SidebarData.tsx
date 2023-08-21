@@ -19,6 +19,11 @@ export const SidebarData= [
         path :"/about",
         icon : <FaIcons.FaRegChartBar />
     },
+    {
+        name: "Cart",
+        path :"/cart",
+        icon : < FaIcons.FaShoppingCart />
+    },
     
     
 ]
