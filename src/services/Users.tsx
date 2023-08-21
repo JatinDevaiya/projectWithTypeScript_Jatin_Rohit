@@ -10,23 +10,30 @@ export const usersApi = createApi({
     getAllUsers: builder.query({
       query: () => "products",
     }),
-
-    postAllUsers: builder.mutation({
-      query: (newUser) => ({
-        url: "users",
-        method: "POST",
-        body: newUser,
-      }),
+    getSingleUsers: builder.query({
+      query: () => "/products/id",
     }),
-    
-    loginUser: builder.mutation({
-      query: (loginUser) => ({
-        url: "/auth/login",
-        method: "POST",
-        body: loginUser,
-      }),
-    }),
+// export const { useGetAllUsersQuery,  }: any = usersApi;
+postAllUsers: builder.mutation({
+  query: (newUser) => ({
+    url: "users",
+    method: "POST",
+    body: newUser,
+  }),
+}),
 
+loginUser: builder.mutation({
+  query: (loginUser) => ({
+    url: "/auth/login",
+    method: "POST",
+    body: loginUser,
+  }),
+}),
   }),
 });
-export const { useGetAllUsersQuery,usePostAllUsersMutation,useLoginUserMutation }: any = usersApi;
+
+
+
+// }),
+// });
+export const { useGetAllUsersQuery,usePostAllUsersMutation,useLoginUserMutation,useGetSingleusersQuery }: any = usersApi;

@@ -1,6 +1,8 @@
 import React from "react";
 import { useGetAllUsersQuery } from "../services/Users";
 import LoaddingPage from "./commonPages/LoaddingPage";
+import LoadingFile from "./commonPages/LoadingFile";
+import { Link } from "react-router-dom";
 
 interface product {
   id: number;
@@ -13,7 +15,14 @@ const UsersPage = () => {
   console.log("allproduct", useGetAllUsersQuery());
   const { data, isError, isLoading } = useGetAllUsersQuery();
   if (isLoading) {
-    return <LoaddingPage />;
+    return(
+    <h1 style={{
+    
+    }}>
+      <LoaddingPage />
+      <LoadingFile/>
+
+    </h1> )
   }
   if (isError) {
     return <p>Something Went Wrong...</p>;
@@ -33,7 +42,7 @@ const UsersPage = () => {
                     <div className="my-3">
                       <div
                         className="card w-100 p-3 bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                        style={{ height: "400px", width: "400px" }}
+                        style={{ height: "500px", width: "400px" }}
                       >
                         <img
                           src={allProduct.images[0]}
@@ -48,6 +57,10 @@ const UsersPage = () => {
                             <h4 className="mb-1 me-1">${allProduct.price}</h4>
                           </div>
                           <h6>category : {allProduct.category.name}</h6>
+
+                         <Link to="/productDetails">
+                          <button className="btn btn-outline-success">View Details</button>
+                         </Link>
                         </div>
                       </div>
                     </div>
