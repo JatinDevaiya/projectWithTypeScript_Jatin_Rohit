@@ -5,10 +5,17 @@ import { NavLink } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import { FaBars } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
+import { useNavigate } from "react-router-dom"; 
+import { Button } from "@mui/material";
 const SIdebar1 = ({ children }: any) => {
   const [isOpan, setIsOpan] = useState(false);
   const toggle = () => setIsOpan(!isOpan);
+const navigate = useNavigate()
 
+  const logOutFn = () => {
+    localStorage.clear();
+    navigate("/signIn");
+  };
   const inputAnimation = {
     hidden: {
       width: 0,
@@ -47,7 +54,7 @@ const SIdebar1 = ({ children }: any) => {
       <div className="main-container">
         <motion.div
           animate={{
-            width: isOpan ? "250px" : "60px",
+            width: isOpan ? "250px" : "70px",
             transition: { duration: 0.5, type: "spring", damping: 10 },
           }}
           className={`sidebar `}
@@ -74,10 +81,10 @@ const SIdebar1 = ({ children }: any) => {
 
           {/* login Page */}
           <NavLink to={"/signIn"}>
-            <h5 style={{ color: "white", textAlign: "center" }}>Login</h5>
+            <h5  style={{ color: "white", textAlign: "center" }}>Login</h5>
           </NavLink>
               
-          <h5 style={{ color: "white", textAlign: "center" }}>Logout</h5>
+          <h5 onClick={logOutFn} style={{ color: "white", textAlign: "center", cursor:"pointer" }}>Logout</h5>
 
           <div className="search">
             <div className="search_icon">

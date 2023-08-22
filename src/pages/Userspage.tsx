@@ -11,18 +11,16 @@ interface product {
   images: any;
   category: { name: string; image: string };
 }
-const UsersPage = () => {
+const HomePage = () => {
   console.log("allproduct", useGetAllUsersQuery());
   const { data, isError, isLoading } = useGetAllUsersQuery();
   if (isLoading) {
-    return(
-    <h1 style={{
-    
-    }}>
-      <LoaddingPage />
-      <LoadingFile/>
-
-    </h1> )
+    return (
+      <>
+        <LoaddingPage />
+        <LoadingFile />
+      </>
+    );
   }
   if (isError) {
     return <p>Something Went Wrong...</p>;
@@ -58,9 +56,11 @@ const UsersPage = () => {
                           </div>
                           <h6>category : {allProduct.category.name}</h6>
 
-                         <Link to="/productDetails">
-                          <button className="btn btn-outline-success">View Details</button>
-                         </Link>
+                          <Link to="/productDetails">
+                            <button className="btn btn-outline-success">
+                              View Details
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -75,4 +75,4 @@ const UsersPage = () => {
   );
 };
 
-export default UsersPage;
+export default HomePage;

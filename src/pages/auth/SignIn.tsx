@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useLoginUserMutation } from "../../services/Users";
+import { useNavigate } from "react-router";
 
 function Copyright(props: any) {
   return (
@@ -23,7 +24,7 @@ function Copyright(props: any) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="/">
         Your Website
       </Link>{" "}
       {new Date().getFullYear()}
@@ -36,31 +37,35 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const [postUser, { isLoading, isError, reset, isSuccess }] =
+  const [postUser, { data, isLoading, isError, reset, isSuccess }] =
     useLoginUserMutation();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const navigate = useNavigate();
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const datas = new FormData(event.currentTarget);
     // console.log({
     //   email: data.get('email'),
     //   password: data.get('password'),
     // });
 
     postUser({
-      email: data.get("email"),
-      password: data.get("password"),
+      email: datas.get("email"),
+      password: datas.get("password"),
     });
-    if (isSuccess) {
-      alert("Login successful");
-      return (window.location.href = "/");
+
+    const token = data && data.access_token;
+    if (token) {
+      console.log(token);
+      localStorage.setItem("token", token);
+      navigate("/")
     }
     // if (isError) {
     //   return (window.location.href = "signIn");
     // }
   };
 
-  // console.log(useLoginUserMutation(),"Loginuser");
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
