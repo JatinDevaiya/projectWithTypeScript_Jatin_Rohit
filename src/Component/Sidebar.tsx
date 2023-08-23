@@ -5,12 +5,13 @@ import { NavLink } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import { FaBars } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
-import { useNavigate } from "react-router-dom"; 
-import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 const SIdebar1 = ({ children }: any) => {
   const [isOpan, setIsOpan] = useState(false);
   const toggle = () => setIsOpan(!isOpan);
-const navigate = useNavigate()
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  // console.log(token,"finial token");
 
   const logOutFn = () => {
     localStorage.clear();
@@ -49,12 +50,13 @@ const navigate = useNavigate()
       },
     },
   };
+
   return (
     <>
       <div className="main-container">
         <motion.div
           animate={{
-            width: isOpan ? "250px" : "70px",
+            width: isOpan ? "250px" : "75px",
             transition: { duration: 0.5, type: "spring", damping: 10 },
           }}
           className={`sidebar `}
@@ -80,11 +82,20 @@ const navigate = useNavigate()
           </div>
 
           {/* login Page */}
-          <NavLink to={"/signIn"}>
-            <h5  style={{ color: "white", textAlign: "center" }}>Login</h5>
-          </NavLink>
-              
-          <h5 onClick={logOutFn} style={{ color: "white", textAlign: "center", cursor:"pointer" }}>Logout</h5>
+
+          {token ? (
+            <h5
+              onClick={logOutFn}
+              style={{ color: "white", textAlign: "center", cursor: "pointer" }}
+              className="link"
+            >
+              Logout
+            </h5>
+          ) : (
+            <NavLink to={"/signIn"} className="link">
+              <h5 style={{ color: "white", textAlign: "center" }}>Login</h5>
+            </NavLink>
+          )}
 
           <div className="search">
             <div className="search_icon">

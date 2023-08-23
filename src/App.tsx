@@ -6,10 +6,11 @@ import Contact from "./pages/Contact";
 // import Navbar from "./pages/Navbar";
 import Sidebar from "./Component/Sidebar";
 import Cart from "./pages/Cart";
-import ProductDetails from "./pages/ProductDetails";
+// import ProductDetails from "./pages/ProductDetails";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
-import HomePage from "./pages/Userspage";
+import HomePage from "./pages/Products";
+import SingleProduct from "./pages/SingleProduct";
 
 const App: React.FunctionComponent = () => {
   return (
@@ -23,7 +24,8 @@ const App: React.FunctionComponent = () => {
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="cart" element={<Cart />} />
-            <Route path="productdetails" element={<ProductDetails />} />
+            {/* <Route path="productdetails" element={<ProductDetails />} /> */}
+            <Route path="/singleProduct/:id" element={<SingleProduct />} />
 
             <Route path="/signIn" element={<SignIn />} />
             <Route path="/signUp" element={<SignUp />} />

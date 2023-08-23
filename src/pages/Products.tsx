@@ -33,7 +33,7 @@ const HomePage = () => {
           <h3>All Products </h3>
           <div className="row">
             {data.map((allProduct: product, index: number) => {
-              // console.log("aaaaaaaaaa", data);
+              console.log("aaaaaaaaaa", data);
               return (
                 <>
                   <div className="col-md-3">
@@ -56,7 +56,8 @@ const HomePage = () => {
                           </div>
                           <h6>category : {allProduct.category.name}</h6>
 
-                          <Link to="/productDetails">
+                          {/* <Link to="/productDetails"> */}
+                          <Link to={`/singleProduct/${allProduct.id}`}>
                             <button className="btn btn-outline-success">
                               View Details
                             </button>

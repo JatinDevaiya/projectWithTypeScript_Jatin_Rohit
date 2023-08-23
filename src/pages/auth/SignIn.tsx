@@ -61,9 +61,6 @@ export default function SignIn() {
       localStorage.setItem("token", token);
       navigate("/")
     }
-    // if (isError) {
-    //   return (window.location.href = "signIn");
-    // }
   };
 
   return (
@@ -123,11 +120,11 @@ export default function SignIn() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
+              {/* <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
-              </Grid>
+              </Grid> */}
               <Grid item>
                 <Link href="/signUp" variant="body2">
                   {"Don't have an account? Sign Up"}

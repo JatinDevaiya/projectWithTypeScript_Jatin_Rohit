@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { usePostAllUsersMutation } from "../../services/Users";
-
+import { useNavigate } from "react-router";
 function Copyright(props: any) {
   return (
     <Typography
@@ -36,8 +36,11 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const [postUser, { isLoading, isError,reset ,isSuccess}] = usePostAllUsersMutation();
-  console.log(usePostAllUsersMutation(),"postUser");
+  const [postUser, { data, isLoading, isError, reset, isSuccess }] =
+    usePostAllUsersMutation();
+  const navigate = useNavigate();
+  console.log(usePostAllUsersMutation(), "postUser");
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -53,8 +56,15 @@ export default function SignUp() {
       password: data.get("password"),
       avatar: "https://api.lorem.space/image/face?w=640&h=480&r=867",
     });
-
   };
+  if (isSuccess) {
+    navigate("/signIn");
+  }
+  if (isError) {
+    alert(
+      `email should not be empty, email must be an email , name should not be empty,password must be longer than or equal to 4 characters,password should not be empty,password must contain only letters and numbers`
+    );
+  }
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
