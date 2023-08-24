@@ -97,49 +97,34 @@ const SIdebar1 = ({ children }: any) => {
             </NavLink>
           )}
 
-          <div className="search">
-            <div className="search_icon">
-              <BiSearch />
-            </div>
-            <AnimatePresence>
-              {isOpan && (
-                <motion.input
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  variants={inputAnimation}
-                  type="text"
-                  placeholder="Search"
-                />
-              )}
-            </AnimatePresence>
-          </div>
           <section className="routes">
-            {SidebarData.map((route, index) => {
-              return (
-                <NavLink
-                  to={route.path}
-                  key={index}
-                  className="link"
-                  //   activeClassName="active"
-                >
-                  <div className="icon">{route.icon}</div>
-                  <AnimatePresence>
-                    {isOpan && (
-                      <motion.div
-                        variants={showAnimation}
-                        initial="hidden"
-                        animate="show"
-                        exit="hidden"
-                        className="link_text"
-                      >
-                        {route.name}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </NavLink>
-              );
-            })}
+            {token
+              ? SidebarData.map((route, index) => {
+                  return (
+                    <NavLink
+                      to={route.path}
+                      key={index}
+                      className="link"
+                      //   activeClassName="active"
+                    >
+                      <div className="icon">{route.icon}</div>
+                      <AnimatePresence>
+                        {isOpan && (
+                          <motion.div
+                            variants={showAnimation}
+                            initial="hidden"
+                            animate="show"
+                            exit="hidden"
+                            className="link_text"
+                          >
+                            {route.name}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </NavLink>
+                  );
+                })
+              : ""}
           </section>
         </motion.div>
 

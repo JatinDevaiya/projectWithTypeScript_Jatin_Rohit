@@ -10,7 +10,7 @@ export const usersApi = createApi({
       query: () => "products",
     }),
     getSingleProduct: builder.query({
-      query: (id) => `/products/${4}`,
+      query: (id) => `/products/${id}`,
     }),
     postAllUsers: builder.mutation({
       query: (newUser) => ({
