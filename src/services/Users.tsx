@@ -3,37 +3,36 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const usersApi = createApi({
   reducerPath: "usersApi",
   baseQuery: fetchBaseQuery({
-    // baseUrl: "https://jsonplaceholder.typicode.com/",
-    baseUrl:"https://api.escuelajs.co/api/v1/"
+    baseUrl: "https://api.escuelajs.co/api/v1/",
   }),
   endpoints: (builder) => ({
     getAllUsers: builder.query({
       query: () => "products",
     }),
-    getSingleUsers: builder.query({
-      query: () => "/products/id",
+    getSingleProduct: builder.query({
+      query: (id) => `/products/${id}`,
     }),
-// export const { useGetAllUsersQuery,  }: any = usersApi;
-postAllUsers: builder.mutation({
-  query: (newUser) => ({
-    url: "users",
-    method: "POST",
-    body: newUser,
-  }),
-}),
+    postAllUsers: builder.mutation({
+      query: (newUser) => ({
+        url: "users",
+        method: "POST",
+        body: newUser,
+      }),
+    }),
 
-loginUser: builder.mutation({
-  query: (loginUser) => ({
-    url: "/auth/login",
-    method: "POST",
-    body: loginUser,
-  }),
-}),
+    loginUser: builder.mutation({
+      query: (loginUser) => ({
+        url: "/auth/login",
+        method: "POST",
+        body: loginUser,
+      }),
+    }),
   }),
 });
 
-
-
-// }),
-// });
-export const { useGetAllUsersQuery,usePostAllUsersMutation,useLoginUserMutation,useGetSingleusersQuery }: any = usersApi;
+export const {
+  useGetAllUsersQuery,
+  usePostAllUsersMutation,
+  useLoginUserMutation,
+  useGetSingleProductQuery,
+}: any = usersApi;

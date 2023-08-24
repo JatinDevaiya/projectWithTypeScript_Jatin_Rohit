@@ -33,7 +33,7 @@ const HomePage = () => {
           <h3>All Products </h3>
           <div className="row">
             {data.map((allProduct: product, index: number) => {
-              // console.log("aaaaaaaaaa", data);
+              console.log("aaaaaaaaaa", data);
               return (
                 <>
                   <div className="col-md-3">
@@ -42,13 +42,16 @@ const HomePage = () => {
                         className="card w-100 p-3 bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                         style={{ height: "500px", width: "400px" }}
                       >
-                        <img
-                          src={allProduct.images[0]}
-                          className="card-img-top"
-                          alt="Hollywood Sign on The Hill"
-                          height={200}
-                          width={200}
-                        />
+                        <Link to={`/singleProduct/${allProduct.id}`}>
+                          <img
+                            src={allProduct.images[0]}
+                            className="card-img-top"
+                            alt="Hollywood Sign on The Hill"
+                            height={200}
+                            width={200}
+                          />
+                        </Link>
+
                         <div className="card-body">
                           <h4 className="card-title">{allProduct.title}</h4>
                           <div className="d-flex flex-row align-items-center mb-1">
@@ -56,7 +59,8 @@ const HomePage = () => {
                           </div>
                           <h6>category : {allProduct.category.name}</h6>
 
-                          <Link to="/productDetails">
+                          {/* <Link to="/productDetails"> */}
+                          <Link to={`/singleProduct/${allProduct.id}`}>
                             <button className="btn btn-outline-success">
                               View Details
                             </button>

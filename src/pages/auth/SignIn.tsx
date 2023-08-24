@@ -39,7 +39,7 @@ const defaultTheme = createTheme();
 export default function SignIn() {
   const [postUser, { data, isLoading, isError, reset, isSuccess }] =
     useLoginUserMutation();
-
+console.log(data,"login");
     const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -57,13 +57,10 @@ export default function SignIn() {
 
     const token = data && data.access_token;
     if (token) {
-      console.log(token);
+      // console.log(token);
       localStorage.setItem("token", token);
       navigate("/")
     }
-    // if (isError) {
-    //   return (window.location.href = "signIn");
-    // }
   };
 
   return (
@@ -123,11 +120,11 @@ export default function SignIn() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
+              {/* <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
-              </Grid>
+              </Grid> */}
               <Grid item>
                 <Link href="/signUp" variant="body2">
                   {"Don't have an account? Sign Up"}
