@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import { FaBars } from "react-icons/fa";
-import { BiSearch } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 const SIdebar1 = ({ children }: any) => {
   const [isOpan, setIsOpan] = useState(false);
