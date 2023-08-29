@@ -6,7 +6,7 @@ export const usersApi = createApi({
     baseUrl: "https://api.escuelajs.co/api/v1/",
   }),
   endpoints: (builder) => ({
-    getAllUsers: builder.query({
+    getAllProducts: builder.query({
       query: () => "products",
     }),
     getSingleProduct: builder.query({
@@ -19,7 +19,6 @@ export const usersApi = createApi({
         body: newUser,
       }),
     }),
-
     loginUser: builder.mutation({
       query: (loginUser) => ({
         url: "/auth/login",
@@ -31,7 +30,7 @@ export const usersApi = createApi({
 });
 
 export const {
-  useGetAllUsersQuery,
+  useGetAllProductsQuery,
   usePostAllUsersMutation,
   useLoginUserMutation,
   useGetSingleProductQuery,

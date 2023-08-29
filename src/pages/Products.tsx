@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetAllUsersQuery } from "../services/Users";
+import { useGetAllProductsQuery } from "../services/Users";
 import LoaddingPage from "./commonPages/LoaddingPage";
 import LoadingFile from "./commonPages/LoadingFile";
 import { Link } from "react-router-dom";
@@ -12,8 +12,8 @@ interface product {
   category: { name: string; image: string };
 }
 const HomePage = () => {
-  console.log("allproduct", useGetAllUsersQuery());
-  const { data, isError, isLoading } = useGetAllUsersQuery();
+  console.log("allproduct", useGetAllProductsQuery());
+  const { data, isError, isLoading } = useGetAllProductsQuery();
   if (isLoading) {
     return (
       <>
