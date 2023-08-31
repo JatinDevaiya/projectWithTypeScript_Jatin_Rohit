@@ -26,6 +26,9 @@ export const usersApi = createApi({
         body: loginUser,
       }),
     }),
+    searchProduct: builder.query({
+      query: (keyword) => `/products/?title=${keyword}`,
+    }),
   }),
 });
 
@@ -34,4 +37,5 @@ export const {
   usePostAllUsersMutation,
   useLoginUserMutation,
   useGetSingleProductQuery,
+  useSearchProductQuery,
 }: any = usersApi;
