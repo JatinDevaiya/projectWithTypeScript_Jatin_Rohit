@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGetAllProductsQuery } from "../services/Users";
 import LoaddingPage from "./commonPages/LoaddingPage";
 import LoadingFile from "./commonPages/LoadingFile";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 interface product {
   id: number;
@@ -12,7 +12,8 @@ interface product {
   category: { name: string; image: string };
 }
 const HomePage = () => {
-  console.log("allproduct", useGetAllProductsQuery());
+  // console.log("allproduct", useGetAllProductsQuery());
+  const [keyword, setKeyword] = useState("");
   const { data, isError, isLoading } = useGetAllProductsQuery();
   if (isLoading) {
     return (
@@ -29,8 +30,26 @@ const HomePage = () => {
   return (
     <>
       <section style={{ background: "#eee" }}>
-        <div className="container">
+        <div className="container mt-3">
           <h3>All Products </h3>
+          {/* search button template */}
+          <div className="input-group">
+            <input
+              type="search"
+              id="form1"
+              className="form-control"
+              placeholder="search"
+              onChange={(e) => {
+                setKeyword(e.target.value);
+              }}
+            />
+            <NavLink to={`/searchProduct/${keyword}`}>
+              <button type="button" className="btn btn-primary">
+                <i className="fas fa-search" />
+              </button>
+            </NavLink>
+          </div>
+
           <div className="row">
             {data.map((allProduct: product, index: number) => {
               console.log("aaaaaaaaaa", data);
@@ -39,7 +58,7 @@ const HomePage = () => {
                   <div className="col-md-3">
                     <div className="my-3">
                       <div
-                        className="card w-100 p-3 bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                        className="card w-100 p-3 bg-image hover-zoom "
                         style={{ height: "500px", width: "400px" }}
                       >
                         <Link to={`/singleProduct/${allProduct.id}`}>

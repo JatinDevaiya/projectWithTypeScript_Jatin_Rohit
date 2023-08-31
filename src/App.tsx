@@ -11,6 +11,7 @@ import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 import HomePage from "./pages/Products";
 import SingleProduct from "./pages/SingleProduct";
+import SearchProduct from "./pages/SearchProduct";
 
 const App: React.FunctionComponent = () => {
   return (
@@ -31,6 +32,7 @@ const App: React.FunctionComponent = () => {
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/searchProduct/:keyword" element={<SearchProduct />} />
           </Routes>
         </Sidebar>
       </Router>
