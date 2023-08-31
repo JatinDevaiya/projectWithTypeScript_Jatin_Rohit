@@ -14,7 +14,7 @@ const SIdebar1 = ({ children }: any) => {
 
   const logOutFn = () => {
     localStorage.clear();
-    navigate("/signIn");
+    navigate("/");
   };
   const inputAnimation = {
     hidden: {
@@ -91,7 +91,7 @@ const SIdebar1 = ({ children }: any) => {
               Logout
             </h5>
           ) : (
-            <NavLink to={"/signIn"} className="link">
+            <NavLink to={"/"} className="link">
               <h5 style={{ color: "white", textAlign: "center" }}>Login</h5>
             </NavLink>
           )}
