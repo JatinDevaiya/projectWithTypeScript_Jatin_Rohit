@@ -6,7 +6,7 @@ export const SidebarData= [
 
     {
         name: "Home",
-        path :"/",
+        path :"/home",
         icon : <FaIcons.FaHome/>
     },
     {

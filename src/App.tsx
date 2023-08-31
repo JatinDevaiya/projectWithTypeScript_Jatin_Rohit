@@ -20,14 +20,14 @@ const App: React.FunctionComponent = () => {
           {/* <Navbar /> */}
 
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="cart" element={<Cart />} />
             {/* <Route path="productdetails" element={<ProductDetails />} /> */}
             <Route path="/singleProduct/:id" element={<SingleProduct />} />
 
-            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/" element={<SignIn />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
