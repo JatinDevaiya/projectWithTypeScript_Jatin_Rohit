@@ -11,7 +11,7 @@ interface product {
   images: any;
   category: { name: string; image: string };
 }
-const HomePage = () => {
+const Product = () => {
   // console.log("allproduct", useGetAllProductsQuery());
   const [keyword, setKeyword] = useState("");
   const { data, isError, isLoading } = useGetAllProductsQuery();
@@ -29,7 +29,7 @@ const HomePage = () => {
 
   return (
     <>
-      <section style={{ background: "#eee" }}>
+      <section style={{ background: "#eee", paddingTop:"100px" }}>
         <div className="container mt-3">
           <h3>All Products </h3>
           {/* search button template */}
@@ -98,4 +98,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Product;

@@ -2,6 +2,9 @@ import React from "react";
 import { useGetSingleProductQuery } from "../services/Users";
 import { useParams } from "react-router";
 import LoadingFile from "./commonPages/LoadingFile";
+import { Add } from "../redux/CartSlice";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -9,6 +12,11 @@ const SingleProduct = () => {
   const { data, isLoading, isError, isSuccess } = useGetSingleProductQuery(id);
   console.log(isSuccess, "success");
   console.log(data, "dataaa");
+  const dispatch = useDispatch();
+
+  const handleAdd = (item:any) => {
+    dispatch(Add({ ...data, quantity: 0 }));
+  };
   return (
     <header>
       {/* content */}
@@ -103,10 +111,10 @@ const SingleProduct = () => {
                     {" "}
                     Buy now{" "}
                   </a>
-                  <a href="#" className="btn btn-primary shadow-0">
-                    {" "}
+                  <Link to="/cart" onClick={() => handleAdd(data)} className="btn btn-primary shadow-0">
+                    
                     <i className="me-1 fa fa-shopping-basket" /> Add to cart{" "}
-                  </a>
+                  </Link>
                   <a
                     href="#"
                     className="btn btn-light border border-secondary py-2 icon-hover px-3"

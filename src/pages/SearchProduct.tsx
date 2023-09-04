@@ -14,7 +14,7 @@ const SearchProduct = () => {
   const { data, isSuccess } = useSearchProductQuery(keyword);
 
   return (
-    <section style={{ background: "#eee" }}>
+    <section style={{ background: "#eee", paddingTop:"100px" }}>
       <div className="container">
         <div className="row">
           {isSuccess &&
