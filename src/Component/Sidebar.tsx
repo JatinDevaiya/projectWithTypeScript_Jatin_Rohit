@@ -10,7 +10,6 @@ const SIdebar1 = ({ children }: any) => {
   const toggle = () => setIsOpan(!isOpan);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  // console.log(token,"finial token");
 
   const logOutFn = () => {
     localStorage.clear();

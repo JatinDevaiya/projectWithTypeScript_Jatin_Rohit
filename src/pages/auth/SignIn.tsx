@@ -37,16 +37,11 @@ const defaultTheme = createTheme();
 export default function SignIn() {
   const [postUser, { data, isLoading, isError, reset, isSuccess }] =
     useLoginUserMutation();
-console.log(data,"login");
     const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const datas = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
 
     postUser({
       email: datas.get("email"),
@@ -55,9 +50,8 @@ console.log(data,"login");
 
     const token = data && data.access_token;
     if (token) {
-      // console.log(token);
       localStorage.setItem("token", token);
-      navigate("/home")
+      navigate("/")
     }
   };
 

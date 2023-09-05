@@ -35,8 +35,6 @@ const Cart = () => {
                     Your products
                   </h3>
                   {CartProd.map((product:prod, index:number)=>{
-                    console.log("abcd",product);
-                    
                     return ( 
                       <>
                       <div className="d-flex align-items-center mb-5">

@@ -8,10 +8,7 @@ import { Link } from "react-router-dom";
 
 const SingleProduct = () => {
   const { id } = useParams();
-  // console.log(useGetSingleProductQuery(), "single product");
   const { data, isLoading, isError, isSuccess } = useGetSingleProductQuery(id);
-  console.log(isSuccess, "success");
-  console.log(data, "dataaa");
   const dispatch = useDispatch();
 
   const handleAdd = (item:any) => {

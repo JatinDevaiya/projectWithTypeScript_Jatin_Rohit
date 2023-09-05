@@ -26,7 +26,6 @@ const cartSlice = createSlice({
                     quantity: action.payload.quantity + 1
 
                 })
-                // console.log("ppppp",action.payload)
             } else {
                 state[existingItemIndex ].quantity =+ 1
             }
