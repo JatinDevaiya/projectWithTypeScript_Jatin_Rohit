@@ -39,16 +39,10 @@ export default function SignUp() {
   const [postUser, { data, isLoading, isError, reset, isSuccess }] =
     usePostAllUsersMutation();
   const navigate = useNavigate();
-  console.log(usePostAllUsersMutation(), "postUser");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
-    // console.log({
-    //   email: data.get("email"),
-    //   password: data.get("password"),
-    // });
 
     postUser({
       name: data.get("firstName"),

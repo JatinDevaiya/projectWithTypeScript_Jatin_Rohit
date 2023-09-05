@@ -11,8 +11,7 @@ interface product {
   images: any;
   category: { name: string; image: string };
 }
-const HomePage = () => {
-  // console.log("allproduct", useGetAllProductsQuery());
+const Product = () => {
   const [keyword, setKeyword] = useState("");
   const { data, isError, isLoading } = useGetAllProductsQuery();
   if (isLoading) {
@@ -29,7 +28,7 @@ const HomePage = () => {
 
   return (
     <>
-      <section style={{ background: "#eee" }}>
+      <section style={{ background: "#eee", paddingTop:"100px" }}>
         <div className="container mt-3">
           <h3>All Products </h3>
           {/* search button template */}
@@ -52,7 +51,6 @@ const HomePage = () => {
 
           <div className="row">
             {data.map((allProduct: product, index: number) => {
-              console.log("aaaaaaaaaa", data);
               return (
                 <>
                   <div className="col-md-3">
@@ -74,7 +72,7 @@ const HomePage = () => {
                         <div className="card-body">
                           <h4 className="card-title">{allProduct.title}</h4>
                           <div className="d-flex flex-row align-items-center mb-1">
-                            <h4 className="mb-1 me-1">${allProduct.price}</h4>
+                            <h4 className="mb-1 me-1">Rs.{allProduct.price}</h4>
                           </div>
                           <h6>category : {allProduct.category.name}</h6>
 
@@ -98,4 +96,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Product;

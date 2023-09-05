@@ -1,10 +1,28 @@
-import { NavLink } from "react-router-dom";
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link } from "react-router-dom";
 const Navbar = () => {
+  const [token, setToken] = useState(localStorage.getItem('token') || "")
+  
+
+  const gettoken = () => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }
+  const logOutFn = () => {
+    localStorage.clear();
+    setToken("");
+    // navigate("/"); 
+  };
+
+  useEffect(() => {
+    gettoken();
+  }, [])
+
   return (
     <>
-      {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top ">
         {/* Container wrapper */}
         <div className="container-fluid">
           {/* Toggle button */}
@@ -20,118 +38,102 @@ const Navbar = () => {
             <i className="fas fa-bars" />
           </button>
           {/* Collapsible wrapper */}
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div
+            className="collapse navbar-collapse"
+            id="navbarSupportedContent"
+          >
             {/* Navbar brand */}
-            <a className="navbar-brand mt-2 mt-lg-0" href="#">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                height={15}
-                alt="MDB Logo"
+            <a className="navbar-brand mt-2 mt-lg-0" href="/">
+              <img className="  animation"
+                src="logo.png"
+                height={50}
+                alt="FUN STORE"
                 loading="lazy"
               />
             </a>
             {/* Left links */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link" to="/">Home</NavLink>
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="about">About</NavLink>
+                <Link className="nav-link" to="Product">
+                  Product
+                </Link>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="contact">Contact</NavLink>
+                <Link className="nav-link" to="about">
+                  About
+                </Link>
               </li>
             </ul>
             {/* Left links */}
           </div>
-          {/* Collapsible wrapper */}
           {/* Right elements */}
           <div className="d-flex align-items-center">
             {/* Icon */}
-            <a className="text-reset me-3" href="#">
-              <i className="fas fa-shopping-cart" />
-            </a>
-            {/* Notifications */}
-            <div className="dropdown">
-              <a
-                className="text-reset me-3 dropdown-toggle hidden-arrow"
-                href="#"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-mdb-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i className="fas fa-bell" />
-                <span className="badge rounded-pill badge-notification bg-danger">
-                  1
-                </span>
-              </a>
-              <ul
-                className="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Some news
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another news
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </div>
-            {/* Avatar */}
-            <div className="dropdown">
-              <a
-                className="dropdown-toggle d-flex align-items-center hidden-arrow"
-                href="#"
-                id="navbarDropdownMenuAvatar"
-                role="button"
-                data-mdb-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                  className="rounded-circle"
-                  height={25}
-                  alt="Black and White Portrait of a Man"
-                  loading="lazy"
-                />
-              </a>
-              <ul
-                className="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdownMenuAvatar"
-              >
-                <li>
-                  <a className="dropdown-item" href="#">
-                    My profile
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Settings
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Logout
-                  </a>
-                </li>
-              </ul>
-            </div>
+
+            {token ? false : true &&
+              <Link className="nav-link " to="signin">
+                Login
+              </Link>
+            }
+
+            {token &&
+              <Link className="link-secondary me-3" to="Cart">
+                <i className="fas fa-shopping-cart" />
+                <a href="">
+                  <span className="badge rounded-pill badge-notification bg-danger">
+                    {/* {items.length} */}
+                  </span>
+                </a>
+              </Link>
+            }
+            {token &&
+              <div className="dropdown">
+                <a
+                  className="dropdown-toggle d-flex align-items-center hidden-arrow"
+                  href="#"
+                  id="navbarDropdownMenuAvatar"
+                  role="button"
+                  data-mdb-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    src="https://th.bing.com/th/id/OIP.e1KNYwnuhNwNj7_-98yTRwHaF7?w=271&h=217&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+                    className="rounded-circle"
+                    height={25}
+                    alt="Black and White Portrait of a Man"
+                    loading="lazy"
+                  />
+                </a>
+                <ul
+                  className="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="navbarDropdownMenuAvatar"
+                >
+                  <li>
+                    <Link className="dropdown-item" to="/ProfilePage">
+                      My profile
+                    </Link>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Settings
+                    </a>
+                  </li>
+                  <li>
+                    <button className="dropdown-item" onClick={logOutFn}>
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            }
           </div>
-          {/* Right elements */}
         </div>
-        {/* Container wrapper */}
       </nav>
-      {/* Navbar */}
     </>
   );
 };
