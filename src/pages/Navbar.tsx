@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
-  const [token, setToken] = useState(localStorage.getItem('token') || "")
-  
+  const [token, setToken] = useState("");
+  const navigate = useNavigate();
 
+  const storedToken = localStorage.getItem("token");
   const gettoken = () => {
-    const storedToken = localStorage.getItem('token');
     if (storedToken) {
       setToken(storedToken);
     }
-  }
+  };
+  useEffect(() => {
+    gettoken();
+  }, [storedToken]);
+
   const logOutFn = () => {
     localStorage.clear();
     setToken("");
-    // navigate("/"); 
+    navigate("/");
   };
-
-  useEffect(() => {
-    gettoken();
-  }, [])
 
   return (
     <>
@@ -38,13 +39,11 @@ const Navbar = () => {
             <i className="fas fa-bars" />
           </button>
           {/* Collapsible wrapper */}
-          <div
-            className="collapse navbar-collapse"
-            id="navbarSupportedContent"
-          >
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
             {/* Navbar brand */}
             <a className="navbar-brand mt-2 mt-lg-0" href="/">
-              <img className="  animation"
+              <img
+                className="  animation"
                 src="logo.png"
                 height={50}
                 alt="FUN STORE"
@@ -75,13 +74,13 @@ const Navbar = () => {
           <div className="d-flex align-items-center">
             {/* Icon */}
 
-            {token ? false : true &&
+            {/* {token ? false : true &&
               <Link className="nav-link " to="signin">
                 Login
               </Link>
-            }
+            } */}
 
-            {token &&
+            {token && (
               <Link className="link-secondary me-3" to="Cart">
                 <i className="fas fa-shopping-cart" />
                 <a href="">
@@ -90,8 +89,9 @@ const Navbar = () => {
                   </span>
                 </a>
               </Link>
-            }
-            {token &&
+            )}
+
+            {token ? (
               <div className="dropdown">
                 <a
                   className="dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -130,7 +130,11 @@ const Navbar = () => {
                   </li>
                 </ul>
               </div>
-            }
+            ) : (
+              <Link className="nav-link " to="signin">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </nav>
