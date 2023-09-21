@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
+import { useGetAllProductsQuery } from '../services/Users';
+import { useSelector } from 'react-redux';
 const Navbar = () => {
   const [token, setToken] = useState(localStorage.getItem('token') || "")
+  const items = useSelector((state:any) => state.cart);
   
 
   const gettoken = () => {
@@ -86,7 +89,8 @@ const Navbar = () => {
                 <i className="fas fa-shopping-cart" />
                 <a href="">
                   <span className="badge rounded-pill badge-notification bg-danger">
-                    {/* {items.length} */}
+                    {items.length}
+                    
                   </span>
                 </a>
               </Link>
