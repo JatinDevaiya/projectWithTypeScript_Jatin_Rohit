@@ -51,7 +51,7 @@ const Cart = () => {
                             <i className="fas fa-times" />
                           </a>
                           <h5 className="text-primary">{product.title}</h5>
-                          <h6 style={{ color: "#9e9e9e" }}>Color: white</h6>
+                          {/* <h6 style={{ color: "#9e9e9e" }}>Color: white</h6> */}
                           <div className="d-flex align-items-center">
                             <p className="fw-bold mb-0 me-5 pe-3">{product.price}$</p>
                             <div className="def-number-input number-input safari_only">
@@ -172,7 +172,7 @@ const Cart = () => {
                       className="fw-bold mb-5"
                       style={{ position: "absolute", bottom: 0 }}
                     >
-                      <a href="/home">
+                      <a href="/">
                         <i className="fas fa-angle-left me-2" />
                         Back to shopping
                       </a>
