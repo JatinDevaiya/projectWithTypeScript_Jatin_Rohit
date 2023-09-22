@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   const items = useSelector((state: any) => state.cart);
-  const [token, setToken] = useState(localStorage.getItem('token') || "")
-
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
 
   const storedToken = localStorage.getItem("token");
   const gettoken = () => {
@@ -23,6 +21,14 @@ const Navbar = () => {
     localStorage.clear();
     setToken("");
     navigate("/");
+  };
+
+  const totalQuantity = () => {
+    let total: any = null;
+    items.map((tqua: any) => {
+      total = total + tqua.quantity;
+    });
+    return total;
   };
 
   return (
@@ -77,20 +83,12 @@ const Navbar = () => {
           {/* Right elements */}
           <div className="d-flex align-items-center">
             {/* Icon */}
-
-            {/* {token ? false : true &&
-              <Link className="nav-link " to="signin">
-                Login
-              </Link>
-            } */}
-
             {token && (
               <Link className="link-secondary me-3" to="Cart">
                 <i className="fas fa-shopping-cart" />
                 <a href="">
                   <span className="badge rounded-pill badge-notification bg-danger">
-                    {items.length}
-
+                    {totalQuantity()}
                   </span>
                 </a>
               </Link>
@@ -145,9 +143,6 @@ const Navbar = () => {
       </nav>
     </>
   );
-}
-
-
-
+};
 
 export default Navbar;

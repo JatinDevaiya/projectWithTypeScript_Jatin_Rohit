@@ -84,8 +84,9 @@ const Cart = () => {
                                 min={1}
                                 name="quantity"
                                 defaultValue={product.quantity}
-                                // value={product.quantity}
+                                value={product.quantity}
                                 type="number"
+                                readOnly
                               />
                               <button
                                 // onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
