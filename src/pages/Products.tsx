@@ -17,7 +17,7 @@ const Product = () => {
   if (isLoading) {
     return (
       <>
-        <LoaddingPage />
+        {/* <LoaddingPage /> */}
         <LoadingFile />
       </>
     );
@@ -28,7 +28,7 @@ const Product = () => {
 
   return (
     <>
-      <section style={{ background: "#eee", paddingTop:"100px" }}>
+      <section style={{ background: "#eee", paddingTop:"100px" }} >
         <div className="container mt-3">
           <h3>All Products </h3>
           {/* search button template */}
@@ -36,14 +36,14 @@ const Product = () => {
             <input
               type="search"
               id="form1"
-              className="form-control"
+              className="form-control p-3"
               placeholder="search"
               onChange={(e) => {
                 setKeyword(e.target.value);
               }}
             />
             <NavLink to={`/searchProduct/${keyword}`}>
-              <button type="button" className="btn btn-primary">
+              <button type="button" className="btn btn-primary p-3">
                 <i className="fas fa-search" />
               </button>
             </NavLink>

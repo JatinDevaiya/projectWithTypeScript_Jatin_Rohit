@@ -1,8 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { Add, remove, removeOnePRoduct } from '../redux/CartSlice'
+import { Link } from 'react-router-dom'
 interface prod{
 state: any
 cart:any,
+id:string,
 category: {
   image:string
 }
@@ -20,6 +23,10 @@ const Cart = () => {
     });
     return total;
   };
+  const disptch = useDispatch();
+  const handleRemove=(productId:number)=>{
+    disptch(remove(productId))
+  }
   return (
     <div  style={{
       paddingTop:"200px"
@@ -34,7 +41,7 @@ const Cart = () => {
                   <h3 className="mb-5 pt-2 text-center fw-bold text-uppercase">
                     Your products
                   </h3>
-                  {CartProd.map((product:prod, index:number)=>{
+                  {CartProd.length > 0 && CartProd.map((product:any, index:number)=>{
                     return ( 
                       <>
                       <div className="d-flex align-items-center mb-5">
@@ -49,6 +56,11 @@ const Cart = () => {
                         <div className="flex-grow-1 ms-3">
                           <a href="#!" className="float-end text-black">
                             <i className="fas fa-times" />
+                            <button
+                          className="btn btn-link px-2"
+                          onClick={() => handleRemove(product.Id)}
+                          
+                        ></button>
                           </a>
                           <h5 className="text-primary">{product.title}</h5>
                           {/* <h6 style={{ color: "#9e9e9e" }}>Color: white</h6> */}
@@ -58,18 +70,28 @@ const Cart = () => {
                               <button
                                 // onClick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                 className="minus"
-                              >➕</button>
+                                 
+                                onClick={() => {
+                                  if (product.quantity > 1) {
+                                    disptch(removeOnePRoduct(product));
+                                  } else {
+                                    handleRemove(product.id);
+                                  }
+                                }}
+                              >➖</button>
                               <input
                                 className="quantity fw-bold text-black"
-                                min={0}
+                                min={1}
                                 name="quantity"
-                                defaultValue={1}
+                                defaultValue={product.quantity}
+                                // value={product.quantity}
                                 type="number"
                               />
                               <button
                                 // onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                 className="plus"
-                              >➖</button>
+                                onClick={() => disptch(Add(product))}
+                              >➕</button>
                             </div>
                           </div>
                         </div>
@@ -98,38 +120,13 @@ const Cart = () => {
                     Payment
                   </h3> */}
                   <form className="mb-5">
-                    {/* <div className="form-outline mb-5">
-                      <input
-                        type="text"
-                        id="typeText"
-                        className="form-control form-control-lg"
-                        size={17}
-                        defaultValue="1234 5678 9012 3457"
-                        minLength={19}
-                        maxLength={19}
-                      />
-                      <label className="form-label" htmlFor="typeText">
-                        Card Number
-                      </label>
-                    </div> */}
-                    {/* <div className="form-outline mb-5">
-                      <input
-                        type="text"
-                        id="typeName"
-                        className="form-control form-control-lg"
-                        size={17}
-                        defaultValue="John Smith"
-                      />
-                      <label className="form-label" htmlFor="typeName">
-                        Name on card
-                      </label>
-                    </div> */}
+                   
                     <div className="row">
                       <div className="col-md-7 mb-7">
                         <div className="form-outline">
                           <input
                             type="text"
-                            id="typeExp"
+                            // id="typeExp"
                             className=" form-control-lg"
                             defaultValue="01/22"
                             size={7}
@@ -145,7 +142,7 @@ const Cart = () => {
                         <div className="form-outline">
                           <input
                             type="password"
-                            id="typeText"
+                            // id="typeText"
                             className=" form-control-lg"
                             defaultValue="●●●"
                             size={1}
@@ -172,10 +169,10 @@ const Cart = () => {
                       className="fw-bold mb-5"
                       style={{ position: "absolute", bottom: 0 }}
                     >
-                      <a href="/">
+                      <Link to="/product">
                         <i className="fas fa-angle-left me-2" />
                         Back to shopping
-                      </a>
+                      </Link>
                     </h5>
                   </form>
                 </div>

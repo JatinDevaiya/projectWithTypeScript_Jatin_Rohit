@@ -17,7 +17,7 @@ const SingleProduct = () => {
   return (
     <header>
       {/* content */}
-      <section className="py-5">
+      <section className="py-5 mt-5">
         <div className="container">
           {isSuccess ? (
             <div className="row gx-5">

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useGetAllProductsQuery } from '../services/Users';
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
