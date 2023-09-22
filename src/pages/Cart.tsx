@@ -58,7 +58,6 @@ const Cart = () => {
                                 </div>
                                 <div className="flex-grow-1 ms-3">
                                   <a href="#!" className="float-end text-black">
-                                    <i className="fas fa-times" />
                                     <button
                                       className="btn btn-link px-2"
                                       onClick={() => handleRemove(product.id)}

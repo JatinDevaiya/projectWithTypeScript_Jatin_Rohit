@@ -5,168 +5,16 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
    <>
-   {/* <div className=' mt-5 pt-4'>
-    <div
-          style={{ color: "white" }}
-          id="carouselExampleCaptions"
-          className="carousel slide carousel-fade"
-          data-mdb-ride="carousel"
-        >
-          <div className="carousel-indicators">
-            <button
-              type="button"
-              data-mdb-target="#carouselExampleCaptions"
-              data-mdb-slide-to={0}
-              className="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            />
-            <button
-              type="button"
-              data-mdb-target="#carouselExampleCaptions"
-              data-mdb-slide-to={1}
-              aria-label="Slide 2"
-            />
-            <button
-              type="button"
-              data-mdb-target="#carouselExampleCaptions"
-              data-mdb-slide-to={2}
-              aria-label="Slide 3"
-            />
-          </div>
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%282%29.jpg"
-                height={1200}
-                className="d-block w-100"
-                alt="Wild Landscape"
-              />
-
-              <div
-                className="mask"
-                style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
-              />
-              <div className="carousel-caption d-none d-sm-block mb-5">
-                <h1 className="mb-4">
-                  <strong>New Season Arrivals </strong>
-                </h1>
-                <p>
-                  <strong>Check Out All The Trends</strong>
-                </p>
-              </div>
-            </div>
-
-            <div className="carousel-item">
-              <img
-                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%283%29.jpg"
-                height={1200}
-                className="d-block w-100"
-                alt="Camera"
-              />
-              <div
-                className="mask"
-                style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
-              />
-              <div className="carousel-caption d-none d-md-block mb-5">
-                <h1 className="mb-4">
-                  <strong>New Season Arrivals </strong>
-                </h1>
-                <p>
-                  <strong>Check Out All The Trends</strong>
-                </p>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <img
-                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/8-col/img%285%29.jpg"
-                height={1200}
-                className="d-block w-100"
-                alt="Exotic Fruits"
-              />
-              <div
-                className="mask"
-                style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
-              />
-              <div className="carousel-caption d-none d-md-block mb-5">
-                <h1 className="mb-4">
-                  <strong>New Season Arrivals </strong>
-                </h1>
-                <p>
-                  <strong>Check Out All The Trends</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-mdb-target="#carouselExampleCaptions"
-            data-mdb-slide="prev"
-          >
-            <span className="carousel-control-prev-icon" aria-hidden="true" />
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-mdb-target="#carouselExampleCaptions"
-            data-mdb-slide="next"
-          >
-            <span className="carousel-control-next-icon" aria-hidden="true" />
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
-        <div>
-          hello
-        </div>
-        
-        </div> */}
+   
          <div>
-         <>
+        
   <meta charSet="UTF-8" />
   {/* <title>E-commerce Landing page Template</title> */}
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
   <header>
-    {/* <nav id="nav">
-      <div className="logo nav-common">
-        <img
-          // src="https://res.cloudinary.com/de8cuyd0n/image/upload/v1520412541/E-commerce%20landing%20page/icons/BRANDY_1x.png"
-          alt="brand-logo"
-        />
-      </div>
-      <ul className="nav-common">
-        <li>
-          <a href="#">home</a>
-        </li>
-        <li>
-          <a href="#products">products</a>
-        </li>
-        <li>
-          <a href="#collections">collections</a>
-        </li>
-        <li>
-          <a href="#blog">blog</a>
-        </li>
-        <li>
-          <a href="#contact">contact</a>
-        </li>
-      </ul>
-      <div className="cart nav-icon nav-common">
-        <img
-          // src="https://res.cloudinary.com/de8cuyd0n/image/upload/v1520412544/E-commerce%20landing%20page/icons/shopping_cart_1x.png"
-          alt="shopping-cart"
-        />
-      </div>
-      <div className="menu nav-icon nav-common">
-        <img
-          // src="https://res.cloudinary.com/de8cuyd0n/image/upload/v1520412543/E-commerce%20landing%20page/icons/menu_1x.png"
-          alt="hamburger-menu"
-        />
-      </div>
-    </nav> */}
+   
     <div id="header-hero">
       <div className="header-bg">
         {" "}
@@ -176,7 +24,7 @@ const Home = () => {
         />{" "}
       </div>
       <div className="header-content">
-        <p className="heading-1">fashion collection 2017</p>
+        <p className="heading-1">fashion collection 2023</p>
         <h1>
           wellcome to brand<span className="logo-style">y</span> unique store
         </h1>
@@ -393,7 +241,7 @@ const Home = () => {
       />
     </a>{" "}
   </div>
-</>
+
 
          </div>
   </>
