@@ -19,7 +19,6 @@ const cartSlice = createSlice({
                     return item.id === action.payload.id
                 }
             );
-            console.log("aswqdw", existingItemIndex);
             
             if (existingItemIndex  == -1) {
                 state.push({
@@ -32,7 +31,6 @@ const cartSlice = createSlice({
                     
                 })
             } else {
-                console.log("abcsa" , state[existingItemIndex].quantity + 1);
                 state[existingItemIndex].quantity = state[existingItemIndex].quantity + 1
             }
 
