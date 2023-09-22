@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGetSingleProductQuery } from "../services/Users";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import LoadingFile from "./commonPages/LoadingFile";
 import { Add } from "../redux/CartSlice";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 
 const SingleProduct = () => {
   const { id } = useParams();
   const { data, isLoading, isError, isSuccess } = useGetSingleProductQuery(id);
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
+
   const dispatch = useDispatch();
 
-  const handleAdd = (item:any) => {
-    dispatch(Add({ ...data, quantity: 0 }));
+  const navigate = useNavigate();
+  const handleAdd = (item: any) => {
+    token
+      ? dispatch(Add({ ...data, quantity: 0 })) && navigate("/cart")
+      : navigate("/signin");
   };
   return (
     <header>
@@ -25,9 +29,7 @@ const SingleProduct = () => {
                 <div className="border rounded-4 mb-3 d-flex justify-content-center">
                   <img
                     style={{
-                      maxWidth: "100%",
-                      maxHeight: "100vh",
-                      margin: "auto",
+                      maxWidth: "50%",
                     }}
                     className="rounded-4 fit"
                     src={data.images[0]}
@@ -63,62 +65,13 @@ const SingleProduct = () => {
                     <dd className="col-9">{data.category.name}</dd>
                   </div>
                   <hr />
-                  <div className="row mb-4">
-                    {/* <div className="col-md-4 col-6">
-                    <label className="mb-2">Size</label>
-                    <select
-                      className="form-select border border-secondary"
-                      style={{ height: 35 }}
-                    >
-                      <option>Small</option>
-                      <option>Medium</option>
-                      <option>Large</option>
-                    </select>
-                  </div> */}
-                    {/* col.// */}
-                    <div className="col-md-4 col-6 mb-3">
-                      <label className="mb-2 d-block">Quantity</label>
-                      <div className="input-group mb-3" style={{ width: 170 }}>
-                        <button
-                          className="btn btn-white border border-secondary px-3"
-                          type="button"
-                          id="button-addon1"
-                          data-mdb-ripple-color="dark"
-                        >
-                          <i className="fas fa-minus" />
-                        </button>
-                        <input
-                          type="text"
-                          className="form-control text-center border border-secondary"
-                          aria-label="Example text with button addon"
-                          aria-describedby="button-addon1"
-                        />
-                        <button
-                          className="btn btn-white border border-secondary px-3"
-                          type="button"
-                          id="button-addon2"
-                          data-mdb-ripple-color="dark"
-                        >
-                          <i className="fas fa-plus" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <a href="#" className="btn btn-warning shadow-0">
-                    {" "}
-                    Buy now{" "}
-                  </a>
-                  <Link to="/cart" onClick={() => handleAdd(data)} className="btn btn-primary shadow-0">
-                    
-                    <i className="me-1 fa fa-shopping-basket" /> Add to cart{" "}
-                  </Link>
-                  <a
-                    href="#"
-                    className="btn btn-light border border-secondary py-2 icon-hover px-3"
+
+                  <button
+                    onClick={() => handleAdd(data)}
+                    className="btn btn-primary shadow-0"
                   >
-                    {" "}
-                    <i className="me-1 fa fa-heart fa-lg" /> Save{" "}
-                  </a>
+                    <i className="me-1 fa fa-shopping-basket" /> Add to cart{" "}
+                  </button>
                 </div>
               </main>
             </div>
