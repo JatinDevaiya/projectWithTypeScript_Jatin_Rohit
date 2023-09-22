@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-
-
 const Navbar = () => {
   const navigate = useNavigate();
   const items = useSelector((state: any) => state.cart);
   const [token, setToken] = useState(localStorage.getItem('token') || "")
-  // const [token, setToken] = useState("");
+
 
   const storedToken = localStorage.getItem("token");
   const gettoken = () => {
