@@ -36,14 +36,14 @@ const Product = () => {
             <input
               type="search"
               id="form1"
-              className="form-control p-3"
+              className="form-control p-3 h-100"
               placeholder="search"
               onChange={(e) => {
                 setKeyword(e.target.value);
               }}
             />
             <NavLink to={`/searchProduct/${keyword}`}>
-              <button type="button" className="btn btn-primary p-3">
+              <button type="button" className="btn btn-primary p-3 h-100">
                 <i className="fas fa-search" />
               </button>
             </NavLink>
