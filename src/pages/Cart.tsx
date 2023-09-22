@@ -61,8 +61,8 @@ const Cart = () => {
                                     <i className="fas fa-times" />
                                     <button
                                       className="btn btn-link px-2"
-                                      onClick={() => handleRemove(product.Id)}
-                                    ></button>
+                                      onClick={() => handleRemove(product.id)}
+                                    > ✖️</button>
                                   </a>
                                   <h5 className="text-primary">
                                     {product.title}
