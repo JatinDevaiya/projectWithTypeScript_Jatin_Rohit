@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useGetAllProductsQuery } from '../services/Users';
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 const Navbar = () => {
-  const [token, setToken] = useState(localStorage.getItem('token') || "")
-  const items = useSelector((state:any) => state.cart);
   const navigate = useNavigate();
+  const items = useSelector((state: any) => state.cart);
+  const [token, setToken] = useState(localStorage.getItem('token') || "")
 
 
   const storedToken = localStorage.getItem("token");
@@ -91,7 +90,7 @@ const Navbar = () => {
                 <a href="">
                   <span className="badge rounded-pill badge-notification bg-danger">
                     {items.length}
-                    
+
                   </span>
                 </a>
               </Link>
@@ -146,6 +145,9 @@ const Navbar = () => {
       </nav>
     </>
   );
-};
+}
+
+
+
 
 export default Navbar;

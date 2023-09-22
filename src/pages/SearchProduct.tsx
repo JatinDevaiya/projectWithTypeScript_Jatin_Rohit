@@ -40,7 +40,7 @@ const SearchProduct = () => {
                         <div className="card-body">
                           <h4 className="card-title">{allProduct.title}</h4>
                           <div className="d-flex flex-row align-items-center mb-1">
-                            <h4 className="mb-1 me-1">${allProduct.price}</h4>
+                            <h4 className="mb-1 me-1">Rs.{allProduct.price}</h4>
                           </div>
                           <h6>category : {allProduct.category.name}</h6>
 

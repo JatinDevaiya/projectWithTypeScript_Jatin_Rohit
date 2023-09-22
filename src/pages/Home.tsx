@@ -1,9 +1,10 @@
 import React from 'react';
-import Navbar from '../Navbar';
+import Navbar from './Navbar';
 
 const Home = () => {
   return (
    <>
+   <div className=' mt-5 pt-4'>
     <div
           style={{ color: "white" }}
           id="carouselExampleCaptions"
@@ -114,6 +115,11 @@ const Home = () => {
             <span className="carousel-control-next-icon" aria-hidden="true" />
             <span className="visually-hidden">Next</span>
           </button>
+        </div>
+        <div>
+          hello
+        </div>
+        
         </div>
   </>
   )
